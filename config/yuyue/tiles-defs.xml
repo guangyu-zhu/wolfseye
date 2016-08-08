@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+"http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+  	
+<tiles-definitions>
+
+<!-- ======================== Global config begin ============================== -->	
+	<definition name="plugin.image.upload" path="/plugin/upload/image_upload.jsp"/>
+	<definition name="plugin.image.upload.edit" path="/plugin/upload/image_upload_edit.jsp"/>
+	<definition name="plugin.file.upload" path="/plugin/upload/file_upload.jsp"/>
+	<definition name="cu.admin.master" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/master/index.jsp"/>
+   	</definition>
+	<definition name="cu.admin.site" path="/admin/jsp/login.jsp"/>
+	<definition name="cu.admin.lock" path="/admin/jsp/lock.jsp"/>
+<!-- ======================== Global config end ============================== -->
+	
+<!-- =====================  WEB ===================== -->
+
+	<!-- =====================  account config begin ===================== -->
+   	<definition name="cu.web.account" extends="cu.web.definition">
+		<put name="content" value="/web/site/jsp/account/account.jsp"/>
+   	</definition>
+	
+	<definition name="cu.admin.account.information" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/account/information.jsp"/>
+   	</definition>
+	
+	<definition name="cu.admin.account.edit" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/account/edit.jsp"/>
+   	</definition>
+	
+	<definition name="cu.admin.account.email" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/account/email.jsp"/>
+   	</definition>
+	
+	<definition name="cu.admin.account.message" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/account/message.jsp"/>
+   	</definition>
+	<!-- =====================  account config end ===================== -->
+	
+	<!-- =====================  product config begin ===================== -->
+	<definition name="cu.admin.product.index" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/product/index.jsp"/>
+   	</definition>
+	
+	<definition name="cu.admin.product.category" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/product/category.jsp"/>
+   	</definition>
+	
+	<definition name="cu.admin.product.list" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/product/list.jsp"/>
+   	</definition>
+	
+	<definition name="cu.admin.product.edit" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/product/edit.jsp"/>
+   	</definition>
+	
+	<!-- =====================  product config end ===================== -->
+	
+	<!-- information config begin -->
+	<definition name="admin.information.list" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/information/list.jsp"/>
+   	</definition>
+	<definition name="admin.information.detail" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/information/detail.jsp"/>
+   	</definition>
+	<!-- information config end -->
+	
+	<!-- ============= preference config begin ============= -->
+	<definition name="admin.preference.list" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/preference/list.jsp"/>
+   	</definition>
+	<definition name="admin.preference.detail" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/preference/detail.jsp"/>
+   	</definition>
+	<!-- ============= preference config end ============= -->
+	
+	<!-- =============== pay success begin =============== -->
+	<definition name="pay.success.return" extends="cu.web.definition">
+		<put name="content" value="/web/site/jsp/pay/paySuccess.jsp"/>
+   	</definition>
+	<!-- =============== pay success end =============== -->
+	
+	<!-- ============= 404 ========================== -->
+	<definition name="web.404.page" extends="cu.web.definition">
+		<put name="content" value="/404.jsp"/>
+   	</definition>
+   	
+</tiles-definitions>

@@ -1,0 +1,82 @@
+.pagination{
+	width:550px;
+	margin-left: 315px;
+}
+.pagingBorder{
+	color: #1D943B;
+	float: center;
+	font-weight: bold;
+	font-family: verdana;
+	border: none;
+	padding: 4px 11px;
+	border-radius: 3px;
+	height: 20px;
+	margin-left: 2px;
+	line-height: 20px;
+	font-size: 14px;
+	overflow: hidden;
+	margin: 0;
+	cursor: auto;
+	zoom: 1;
+}
+.pagingBorder:hover{
+	text-decoration: none;
+	background: #852B99;
+}
+.pagingLink{
+	color: #852B99;
+	float: center;
+	height: 20px;
+	padding: 3px 10px;
+	border: 1px solid #ccc;
+	margin-left: 2px;
+	font-family: arial;
+	line-height: 20px;
+	font-size: 14px;
+	overflow: hidden;
+	margin: 0;
+	cursor: auto;
+	zoom: 1;
+}
+.pagingLink:hover{
+	background: #852B99;
+	color: #fff;
+	text-decoration: none;
+}
+.pagingArrows{
+	background: #852B99;
+	float: center;
+	color: #fff;
+	text-decoration: none;
+	position: relative;
+	padding-top: 5px;
+	height: 18px;
+	line-height: 18px;
+	border-radius: 3px;
+	padding: 3px 10px;
+	border: 1px solid #ccc;
+	margin-left: 2px;
+	font-family: arial;
+	font-size: 14px;
+	overflow: hidden;
+}
+.pagingArrows:hover{
+	color: #ECA22E;
+	text-decoration: none;
+}
+.pagingEtc{
+	font-family: verdana;
+	float: center;
+	border: none;
+	padding: 4px 11px;
+	border-radius: 3px;
+	float: center;
+	height: 20px;
+	margin-left: 2px;
+	line-height: 20px;
+	font-size: 14px;
+	overflow: hidden;
+	margin: 0;
+	zoom: 1;
+	color: #333;
+}

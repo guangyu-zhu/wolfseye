@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<!-- ========== Form Bean Definitions =================================== -->
+<form-beans type="org.apache.struts.action.ActionFormBean">
+	<form-bean name="preferenceForm" type="com.yuyue.cu.core.web.jo.PreferenceJo"></form-bean>
+	<form-bean name="addressForm" type="com.yuyue.cu.core.web.jo.BaseAddressJo"></form-bean>
+	<form-bean name="fileUploadForm" type="com.yuyue.cu.core.web.form.FileUploadForm"></form-bean>
+	<form-bean name="simpleUploadForm" type="com.yuyue.cu.core.web.form.SimpleUploadForm"></form-bean>
+    <form-bean name="alipayReturnForm" type="com.alipay.form.AlipayReturnForm"/>
+    <form-bean name="alipayNotifyForm" type="com.alipay.form.AlipayNotifyForm"/>
+</form-beans>
+
+<global-forwards type="org.apache.struts.action.ActionForward">
+	<forward name="unauthorise" path="/admin/home.do" redirect="true"/>
+	<forward name="error" path="/404.do" redirect="true"/>
+	<forward name="pay_return_success" path="pay.success.return" redirect="true"/>
+	<forward name="pay_return_failed" path="pay.success.return" redirect="true"/>
+	<forward name="pay_submit_success" path="/plugin/pay/alipay/alipayapi.jsp" redirect="false"/>
+	<forward name="pay_submit_fail" path="/plugin/pay/alipay/alipayfail.jsp" redirect="false"/>
+</global-forwards>
+	
+	<!-- ============================== Action Mapping Definitions ============================== -->
+<action-mappings type="org.apache.struts.action.ActionMapping">
+
+	<!-- ========== Global config begin ============================== -->
+	<action path="/global/uploadFile" scope="session" name="fileUploadForm" parameter="uploadFile" type="com.yuyue.cu.core.web.action.GlobalAction">
+		<forward name="image_upload_edit" path="plugin.image.upload.edit" redirect="false"/>
+		<forward name="upload_failed" path="plugin.image.upload" redirect="false"/>
+	</action>
+	<action path="/global/uploadFile2" scope="session" name="fileUploadForm" parameter="uploadFile" type="com.yuyue.cu.core.web.action.GlobalAction">
+		<forward name="image_upload_edit" path="plugin.file.upload" redirect="false"/>
+		<forward name="upload_failed" path="plugin.file.upload" redirect="false"/>
+	</action>
+	<action path="/global/findFiles" scope="session" parameter="findFiles" type="com.yuyue.cu.core.web.action.GlobalAction">
+	</action>
+	<action path="/global/removeFile" scope="session" parameter="removeFile" type="com.yuyue.cu.core.web.action.GlobalAction">
+	</action>
+	<action path="/global/cropImage" scope="session" parameter="cropImage" type="com.yuyue.cu.core.web.action.GlobalAction">
+	</action>
+	<action path="/admin/home" scope="session" parameter="adminHome" type="com.yuyue.cu.core.web.action.StaticAction">
+		<forward name="success" path="cu.admin.site" redirect="false"/>
+	</action>
+	<action path="/ajax/save" scope="session" parameter="ajaxSave" type="com.yuyue.cu.core.web.action.StaticAction">
+	</action>
+	<action path="/ajax/label" scope="session" parameter="ajaxLabelConstants" type="com.yuyue.cu.core.web.action.StaticAction">
+	</action>
+	<action path="/admin/master" scope="session" parameter="showConfig" type="com.yuyue.cu.core.web.action.SystemAction">
+		<forward name="success" path="cu.admin.master" redirect="false"/>
+	</action>
+	<action path="/admin/master/saveConfig" scope="session" parameter="ajaxSaveConfig" type="com.yuyue.cu.core.web.action.SystemAction">
+	</action>
+	<action path="/admin/login" scope="session" parameter="adminLogin" type="com.yuyue.cu.core.web.action.SystemAction">
+		<forward name="success" path="/admin/master.do" redirect="true"/>
+	</action>
+	<action path="/admin/logout" scope="session" parameter="adminLogout" type="com.yuyue.cu.core.web.action.SystemAction">
+		<forward name="success" path="/admin/home.do" redirect="true"/>
+	</action>
+	<action path="/admin/lock" scope="session" parameter="adminLogout" type="com.yuyue.cu.core.web.action.SystemAction">
+		<forward name="success" path="cu.admin.lock" redirect="false"/>
+	</action>
+	<!-- ========== Global config end ============================== -->
+	
+	<!-- ========== Preference config begin ============================== -->
+	<action path="/admin/preference/list" scope="session" parameter="list" type="com.yuyue.cu.core.web.action.PreferenceAction">
+		<forward name="success" path="admin.preference.list" redirect="false"/>
+	</action>
+	<action path="/admin/preference/detail" scope="session" parameter="detail" type="com.yuyue.cu.core.web.action.PreferenceAction">
+		<forward name="success" path="admin.preference.detail" redirect="false"/>
+	</action>
+	<action path="/admin/preference/save" scope="session" parameter="save" name="preferenceForm" type="com.yuyue.cu.core.web.action.PreferenceAction">
+		<forward name="success" path="/admin/preference/list.do" redirect="true"/>
+	</action>
+	<action path="/admin/preference/remove" scope="session" parameter="remove" type="com.yuyue.cu.core.web.action.PreferenceAction">
+		<forward name="success" path="/admin/preference/list.do" redirect="true"/>
+	</action>
+	<action path="/web/preference/list" scope="session" parameter="list" type="com.yuyue.cu.core.web.action.PreferenceAction">
+		<forward name="success" path="web.preference.list" redirect="false"/>
+	</action>
+	<action path="/web/preference/detail" scope="session" parameter="detail" type="com.yuyue.cu.core.web.action.PreferenceAction">
+		<forward name="success" path="web.preference.detail" redirect="false"/>
+	</action>
+	<action path="/ajax" scope="session" parameter="main" type="com.yuyue.web.ajax.AjaxAction">
+	</action>
+	<action path="/ajax/preference/list" scope="session" parameter="ajaxList" type="com.yuyue.cu.core.web.action.PreferenceAction">
+	</action>
+	<action path="/ajax/preference/select" scope="session" parameter="ajaxSelect" type="com.yuyue.cu.core.web.action.PreferenceAction">
+	</action>
+	<action path="/ajax/preference/detail" scope="session" parameter="ajaxDetail" type="com.yuyue.cu.core.web.action.PreferenceAction">
+	</action>
+	<!-- ========== Preference config end ============================== -->
+	
+    <!-- ============================= 404 ===================================== -->
+    <action path="/404" scope="session" parameter="webPage" type="com.yuyue.cu.core.web.action.StaticAction">
+		<forward name="success" path="web.404.page" redirect="false"/>
+	</action>
+	
+</action-mappings>
+	
+</struts-config>

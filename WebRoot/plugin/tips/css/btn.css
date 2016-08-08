@@ -1,0 +1,52 @@
+.manager_tips .tips_action .form_btn {
+margin-right: 20px;
+}
+.form_btn_s {
+height: 22px;
+line-height: 22px;
+}
+.form_btn {
+vertical-align: middle;
+display: inline-block;
+height: 28px;
+line-height: 28px;
+border: 1px solid #2674d4;
+border-radius: 2px;
+text-align: center;
+background: #2b8ade;
+-moz-user-select: none;
+-webkit-user-select: none;
+}
+.form_btnmaj_s .form_btn_text {
+background-position: 0 -400px;
+}
+.form_btn_s .form_btn_text {
+padding: 0 10px;
+height: 22px;
+line-height: 21px;
+line-height: 22px	9;
+font-size: 12px;
+font-weight: normal;
+}
+.form_btn .form_btn_text {
+cursor: pointer;
+_float: left;
+display: block;
+padding: 0 10px;
+height: 28px;
+line-height: 27px;
+line-height: 28px	9;
+font-size: 12px;
+font-weight: normal;
+border-radius: 3px;
+text-decoration: none;
+color: #fff;
+background: url(/index/img/form.png) repeat-x 0 -200px;
+}
+.form_btn_s {
+line-height: 22px;
+}
+.form_btn {
+line-height: 28px;
+text-align: center;
+}

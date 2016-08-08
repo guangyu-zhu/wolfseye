@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+"http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+  	
+<tiles-definitions>
+
+<!-- ##################### LAYOUT ##################### -->
+
+	<definition name="cu.web.definition" path="/web/site/jsp/layout/main.jsp">
+		<put name="header" value="/web/site/jsp/layout/header.jsp"/>
+      	<put name="footer" value="/web/site/jsp/layout/footer.jsp"/>
+   	</definition>
+   	
+   	<definition name="cu.admin.definition" path="/admin/jsp/layout/main.jsp">
+		<put name="pageBegin" value="/admin/jsp/layout/PageBegin.jsp"/>
+      	<put name="pageHead" value="/admin/jsp/layout/PageHead.jsp"/>
+      	<put name="header" value="/admin/jsp/layout/Header.jsp"/>
+      	<put name="sidebar" value="/admin/jsp/layout/Sidebar.jsp"/>
+      	<put name="footer" value="/admin/jsp/layout/Footer.jsp"/>
+      	<put name="pageEnd" value="/admin/jsp/layout/PageEnd.jsp"/>
+   	</definition>
+   	
+<!-- =====================  WEB ===================== -->
+
+	<!-- =====================  prd begin ===================== -->
+	<definition name="admin.prd.list" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/prd/list.jsp"/>
+	</definition>
+	<definition name="admin.prd.detail" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/prd/detail.jsp"/>
+	</definition>
+	<!-- =====================  prd end ===================== -->
+
+
+	<!-- =====================  contact begin ===================== -->
+	<definition name="admin.contact.list" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/contact/list.jsp"/>
+   	</definition>
+	<definition name="admin.contact.detail" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/contact/detail.jsp"/>
+   	</definition>
+	<!-- =====================  contact end ===================== -->
+	
+	<!-- =====================  static begin ===================== -->
+	<definition name="web.home.page" extends="cu.web.definition">
+		<put name="content" value="/web/site/jsp/home.jsp"/>
+   	</definition>
+   	<definition name="web.active.account" extends="cu.web.definition">
+		<put name="content" value="/web/site/jsp/account/active.jsp"/>
+   	</definition>
+	<!-- =====================  static end ===================== -->
+	
+   	<!-- =====================  system ===================== -->
+   	<definition name="cu.admin.system.pwd" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/system/pwd.jsp"/>
+   	</definition>
+   	
+   	<definition name="cu.admin.system.shrink" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/system/shrink.jsp"/>
+   	</definition>
+   	
+	<definition name="cu.admin.system.index" extends="cu.admin.definition">
+		<put name="content" value="/admin/jsp/index.jsp"/>
+   	</definition>
+	
+</tiles-definitions>

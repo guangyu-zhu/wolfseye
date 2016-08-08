@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+		
+	<context:component-scan base-package="com.yuyue"/>
+	<context:annotation-config/>
+	
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
+	<context:property-placeholder location="classpath:com/yuyue/config/jdbc.properties"/>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">  
+        <property name="dataSource">  
+            <ref bean="dataSource" />  
+        </property>  
+    </bean> 
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${driverClassName}"/>
+		<property name="url" value="${url}"/>
+		<property name="username" value="${username}"/>
+		<property name="password" value="${password}"/>
+		<!--initialSize: 初始化连接-->
+		<property name="initialSize" value="${initialSize}"/>
+		<!--maxActive: 最大连接数量-->
+		<property name="maxActive" value="${maxActive}"/>
+		<!--maxIdle: 最大空闲连接-->
+		<property name="maxIdle" value="${maxIdle}"/>
+		<!--minIdle: 最小空闲连接-->
+		<property name="minIdle" value="${minIdle}"/>
+		<!--removeAbandoned: 是否自动回收超时连接-->
+		<property name="removeAbandoned" value="${removeAbandoned}"/>
+		<!--removeAbandonedTimeout: 自动回收超时设置 单位是秒-->
+		<property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"/>
+		<!-- log a stack trace of the code which abandoned the database connection resources -->
+		<property name="logAbandoned" value="${logAbandoned}"/>
+		<!-- testOnBorrow true 指明是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个 -->
+		<property name="testOnBorrow" value="${testOnBorrow}"/>
+		<!-- SQL查询,用来验证从连接池取出的连接,在将连接返回给调用者之前.如果指定,则查询必须是一个SQL SELECT并且必须返回至少一行记录 -->
+		<property name="validationQuery" value="${validationQuery}"/>
+	</bean>
+	
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="applicationContextSchedulerContextKey" value="applicationContext"/>
+	</bean>
+	
+	<!-- 
+	<bean name="purgeJob" class="org.springframework.scheduling.quartz.JobDetailBean">  
+        <property name="jobClass" value="com.yuyue.cu.core.job.PurgeJob" />
+        <property name="jobDataAsMap">
+			<map>
+				<entry key="simpleModuleService" value-ref="simpleModuleService"/>
+			</map>
+		</property>
+    </bean> 
+    
+     <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">  
+        <property name="jobDetail" ref="purgeJob" />  
+        <property name="cronExpression" value="1 21 23 * * ?" />  
+    </bean>
+     
+	<bean id="startQuertz" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="applicationContextSchedulerContextKey" value="applicationContext"/>
+		<property name="triggers">  
+	        <list>  
+	            <ref bean="cronTrigger"/>  
+	        </list>  
+    	</property>  
+	</bean>
+	 -->
+		
+</beans>

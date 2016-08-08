@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<!-- ========== Form Bean Definitions =================================== -->
+<form-beans type="org.apache.struts.action.ActionFormBean">
+	<form-bean name="prdForm" type="com.yuyue.web.jo.PrdJo"></form-bean>
+
+	<form-bean name="contactForm" type="com.yuyue.web.jo.ContactJo"></form-bean>
+	
+	<form-bean name="alipayForm" type="com.yuyue.alipay.form.PayForm"/>
+</form-beans>
+	
+	<!-- ========== Global Forward Definitions ============================== -->
+<global-forwards type="org.apache.struts.action.ActionForward">
+	<forward name="home" path="/web/home.do" redirect="true"/>
+</global-forwards>
+	
+	<!-- ========== Action Mapping Definitions ============================== -->
+<action-mappings type="org.apache.struts.action.ActionMapping">
+
+	<!-- prd -->
+	<action path="/admin/prd/list" scope="session" parameter="list" type="com.yuyue.web.action.PrdAction">
+		<forward name="success" path="admin.prd.list" redirect="false"/>
+	</action>
+	<action path="/admin/prd/detail" scope="session" parameter="detail" type="com.yuyue.web.action.PrdAction">
+		<forward name="success" path="admin.prd.detail" redirect="false"/>
+	</action>
+	<action path="/admin/prd/save" scope="session" parameter="save" name="prdForm" type="com.yuyue.web.action.PrdAction">
+		<forward name="success" path="/admin/prd/list.do" redirect="true"/>
+	</action>
+	<action path="/admin/prd/remove" scope="session" parameter="remove" type="com.yuyue.web.action.PrdAction">
+		<forward name="success" path="/admin/prd/list.do" redirect="true"/>
+	</action>
+	<action path="/ajax/prd/list" scope="session" parameter="ajaxList" type="com.yuyue.web.action.PrdAction">
+	</action>
+	<action path="/ajax/prd/select" scope="session" parameter="ajaxSelect" type="com.yuyue.web.action.PrdAction">
+	</action>
+	<action path="/ajax/prd/detail" scope="session" parameter="ajaxDetail" type="com.yuyue.web.action.PrdAction">
+	</action>
+
+
+	<!-- contact -->
+	<action path="/admin/contact/list" scope="session" parameter="list" type="com.yuyue.web.action.ContactAction">
+		<forward name="success" path="admin.contact.list" redirect="false"/>
+	</action>
+	<action path="/admin/contact/detail" scope="session" parameter="detail" type="com.yuyue.web.action.ContactAction">
+		<forward name="success" path="admin.contact.detail" redirect="false"/>
+	</action>
+	<action path="/admin/contact/save" scope="session" parameter="save" name="contactForm" type="com.yuyue.web.action.ContactAction">
+		<forward name="success" path="/admin/contact/list.do" redirect="true"/>
+	</action>
+	<action path="/admin/contact/remove" scope="session" parameter="remove" type="com.yuyue.web.action.ContactAction">
+		<forward name="success" path="/admin/contact/list.do" redirect="true"/>
+	</action>
+	<action path="/web/contact/list" scope="session" parameter="list" type="com.yuyue.web.action.ContactAction">
+		<forward name="success" path="web.contact.list" redirect="false"/>
+	</action>
+	<action path="/web/contact/detail" scope="session" parameter="detail" type="com.yuyue.web.action.ContactAction">
+		<forward name="success" path="web.contact.detail" redirect="false"/>
+	</action>
+	<action path="/ajax/contact/list" scope="session" parameter="ajaxList" type="com.yuyue.web.action.ContactAction">
+	</action>
+	<action path="/ajax/contact/select" scope="session" parameter="ajaxSelect" type="com.yuyue.web.action.ContactAction">
+	</action>
+	<action path="/ajax/contact/detail" scope="session" parameter="ajaxDetail" type="com.yuyue.web.action.ContactAction">
+	</action>
+	
+	<!-- static -->
+	<action path="/web/home" scope="session" parameter="webPage" type="com.yuyue.cu.core.web.action.StaticAction">
+		<forward name="success" path="web.home.page" redirect="false"/>
+	</action>
+	<action path="/active/account" scope="session" parameter="webPage" type="com.yuyue.cu.core.web.action.StaticAction">
+		<forward name="success" path="web.active.account" redirect="false"/>
+	</action>
+	
+	<!-- system -->
+	<action path="/alterLang" scope="session" parameter="alterLang" type="com.yuyue.cu.core.web.action.SystemAction">
+	</action>
+	
+	<action path="/admin/system/showPwd" scope="session" parameter="showPwd" type="com.yuyue.cu.core.web.action.SystemAction">
+		<forward name="success" path="cu.admin.system.pwd" redirect="false"/>
+	</action>
+	
+	<action path="/admin/system/showShrink" scope="session" parameter="showShrink" type="com.yuyue.cu.core.web.action.SystemAction">
+		<forward name="success" path="cu.admin.system.shrink" redirect="false"/>
+	</action>
+	
+	<action path="/admin/uploadFile" scope="session" name="simpleUploadForm" parameter="uploadFile" type="com.yuyue.cu.core.web.action.SystemAction">
+		<forward name="success" path="/upload/uploadFile.jsp" redirect="true"/>
+	</action>
+	
+	<action path="/admin/uploadShrinkImage" scope="session" name="simpleUploadForm" parameter="shrinkImage" type="com.yuyue.cu.core.web.action.SystemAction">
+		<forward name="success" path="/upload/uploadShrink.jsp" redirect="true"/>
+	</action>
+	
+	<action path="/admin/uploadProductImage" scope="session" name="simpleUploadForm" parameter="uploadImage" type="com.yuyue.cu.core.web.action.SystemAction">
+		<forward name="success" path="/upload/uploadSmall.jsp" redirect="true"/>
+	</action>
+	
+	<!-- ============================== Alipay WAP begin ============================== -->
+	<action path="/wap/alipaySubmit" scope="request" parameter="submit" name="alipayForm" type="com.yuyue.alipay.action.PayWapAction"></action>
+    <action path="/wap/alipayReturn" scope="request" parameter="return" name="alipayReturnForm" type="com.yuyue.alipay.action.PayWapAction"></action>
+    <action path="/wap/alipayNotify" scope="request" parameter="notify" name="alipayNotifyForm" type="com.yuyue.alipay.action.PayWapAction"></action>
+    <!-- ============================== Alipay WAP end ============================== -->
+    
+    <!-- ============================== Alipay WEB begin ============================== -->
+	<action path="/web/alipaySubmit" scope="request" parameter="submit" name="alipayForm" type="com.yuyue.alipay.action.PayWebAction"></action>
+    <action path="/web/alipayReturn" scope="request" parameter="return" name="alipayReturnForm" type="com.yuyue.alipay.action.PayWebAction"></action>
+    <action path="/web/alipayNotify" scope="request" parameter="notify" name="alipayNotifyForm" type="com.yuyue.alipay.action.PayWebAction"></action>
+    <!-- ============================== Alipay WEB end ============================== -->
+	
+</action-mappings>
+	
+	
+	<!-- ========== Spring Intergration =========================== -->
+	<controller processorClass="org.springframework.web.struts.AutowiringTilesRequestProcessor" />
+	
+	
+	<!-- ========== Message Resources Definitions ============================== -->
+    <message-resources parameter="com.yuyue.config.FieldLabelResources"/>
+	
+	
+	<!-- ========== Plug In Definitions =========================== -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml,/WEB-INF/yuyue/tiles-defs.xml" />
+		<set-property property="definitions-parser-details" value="2" />
+		<set-property property="definitions-parser-validate" value="true" />
+		<set-property property="moduleAware" value="true" />
+	</plug-in>
+	
+	
+</struts-config>
